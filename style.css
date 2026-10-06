@@ -1,0 +1,495 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 35px 20px;
+
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 255, 255, 0.18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(0, 0, 0, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #7a0000,
+            #c90000 45%,
+            #e60012 60%,
+            #8b0000
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   EFEITOS DO FUNDO
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.18) 2px,
+            transparent 3px
+        );
+
+    background-size: 70px 70px;
+
+    opacity: 0.25;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 400px;
+    height: 400px;
+
+    top: -150px;
+    right: -120px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+
+    filter: blur(15px);
+
+    animation: brilho 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes brilho {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-100px, 100px);
+    }
+}
+
+
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
+.pokedex {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 4px solid #111;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        8px 8px 0 #111;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.pokedex h1 {
+    margin: 10px 0 25px;
+
+    text-align: center;
+
+    color: #111;
+
+    font-size: 34px;
+    font-weight: 900;
+}
+
+
+/* =========================================
+   POKÉBOLA
+========================================= */
+
+.pokeball {
+    position: relative;
+
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        to bottom,
+        #f52222 0%,
+        #f52222 46%,
+        #171717 46%,
+        #171717 54%,
+        #f4f4f4 54%,
+        #f4f4f4 100%
+    );
+
+    border: 4px solid #111;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.4),
+        inset 0 3px 5px rgba(255, 255, 255, 0.25);
+}
+
+.pokeball::before {
+    content: "";
+
+    position: absolute;
+
+    width: 27px;
+    height: 27px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #f5f5f5;
+
+    border: 5px solid #111;
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 0 3px #ddd;
+}
+
+
+/* =========================================
+   ÁREA DE PESQUISA
+========================================= */
+
+.search-container {
+    width: 100%;
+    max-width: 480px;
+
+    margin: 0 auto 25px;
+
+    text-align: center;
+}
+
+
+/* Campo */
+
+#campoBusca {
+    display: block;
+
+    width: 100%;
+    max-width: 400px;
+
+    margin: 0 auto 12px;
+
+    padding: 12px 18px;
+
+    border: 2px solid #111;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    background: #fff;
+
+    color: #111;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+
+    transition: 0.2s;
+}
+
+#campoBusca:focus {
+    border-color: #e60012;
+
+    box-shadow:
+        0 0 0 3px rgba(230, 0, 18, 0.15);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+    padding: 10px 18px;
+
+    border: 2px solid #111;
+
+    border-radius: 10px;
+
+    background: #e60012;
+
+    color: #fff;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
+}
+
+button:hover {
+    background: #b0000d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================
+   RESULTADO
+========================================= */
+
+#resultado {
+    width: 100%;
+    max-width: 450px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* Imagem */
+
+#resultado img {
+    display: block;
+
+    width: 180px;
+    height: 180px;
+
+    margin: 10px auto;
+
+    object-fit: contain;
+}
+
+
+/* Nome */
+
+#resultado h2 {
+    margin: 10px 0;
+
+    color: #b71c1c;
+
+    font-size: 30px;
+
+    text-transform: capitalize;
+
+    font-weight: 800;
+}
+
+
+/* Informações */
+
+#resultado p {
+    margin: 8px 0;
+
+    color: #333;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   TIPOS
+========================================= */
+
+.pokemon-tipos {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 15px 0;
+
+    flex-wrap: wrap;
+}
+
+.tipo {
+    padding: 6px 15px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+
+    border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   CORES DOS TIPOS
+========================================= */
+
+.tipo.normal {
+    background: #A8A878;
+}
+
+.tipo.fire {
+    background: #F08030;
+}
+
+.tipo.water {
+    background: #6890F0;
+}
+
+.tipo.electric {
+    background: #F8D030;
+    color: #222;
+}
+
+.tipo.grass {
+    background: #78C850;
+}
+
+.tipo.ice {
+    background: #98D8D8;
+    color: #222;
+}
+
+.tipo.fighting {
+    background: #C03028;
+}
+
+.tipo.poison {
+    background: #A040A0;
+}
+
+.tipo.ground {
+    background: #E0C068;
+    color: #222;
+}
+
+.tipo.flying {
+    background: #A890F0;
+}
+
+.tipo.psychic {
+    background: #F85888;
+}
+
+.tipo.bug {
+    background: #A8B820;
+}
+
+.tipo.rock {
+    background: #B8A038;
+}
+
+.tipo.ghost {
+    background: #705898;
+}
+
+.tipo.dragon {
+    background: #7038F8;
+}
+
+.tipo.dark {
+    background: #705848;
+}
+
+.tipo.steel {
+    background: #B8B8D0;
+    color: #222;
+}
+
+.tipo.fairy {
+    background: #EE99AC;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+    .pokedex {
+        padding: 22px 15px;
+
+        border-width: 3px;
+
+        box-shadow:
+            0 15px 30px rgba(0, 0, 0, 0.4),
+            5px 5px 0 #111;
+    }
+
+    .pokedex h1 {
+        font-size: 28px;
+    }
+
+    #campoBusca {
+        max-width: 100%;
+    }
+
+    #resultado img {
+        width: 210px;
+        height: 210px;
+    }
+
+    #resultado h2 {
+        font-size: 26px;
+    }
+
+    button {
+        padding: 10px 15px;
+    }
+}
