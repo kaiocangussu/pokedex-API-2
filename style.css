@@ -681,3 +681,6 @@ button:hover {
     }
 
 }
+.entrada-pokemon {
+    animation: entradaPokemon 0.5s ease-out;
+}

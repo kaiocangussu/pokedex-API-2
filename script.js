@@ -5,9 +5,7 @@ const btnBuscar = document.getElementById('btnBuscar')
 const btnAnterior = document.getElementById('btnAnterior')
 const btnAleatorio = document.getElementById('btnAleatorio')
 const btnProximo = document.getElementById('btnProximo')
-const imagem = document.querySelector("#resultado img");
 
-imagem.classList.add("entrada-pokemon");
 var pokemonAtual = 1;
 buscarPokemon(pokemonAtual)
 
@@ -55,7 +53,9 @@ async function buscarPokemon(termo) {
 resultado.innerHTML = `
     <div class="pokemon-card">
 
-        <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${String(pokemon.id).padStart(3, '0')}.png"/>
+       <img 
+    class="entrada-pokemon"
+    src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${String(pokemon.id).padStart(3, '0')}.png"/>
 
         <p>#${pokemon.id}</p>
 
