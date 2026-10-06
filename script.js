@@ -5,6 +5,9 @@ const btnBuscar = document.getElementById('btnBuscar')
 const btnAnterior = document.getElementById('btnAnterior')
 const btnAleatorio = document.getElementById('btnAleatorio')
 const btnProximo = document.getElementById('btnProximo')
+const imagem = document.querySelector("#resultado img");
+
+imagem.classList.add("entrada-pokemon");
 var pokemonAtual = 1;
 buscarPokemon(pokemonAtual)
 
@@ -74,7 +77,7 @@ resultado.innerHTML = `
     </div>
 `;
     } else {
-        resultado.innerHTML = '<h2>Pokemon não encontrado<h2>'
+        resultado.innerHTML = '<h2>Pokemon não encontrado</h2>'
     }
 
 
